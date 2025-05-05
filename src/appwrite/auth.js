@@ -38,14 +38,12 @@ export class AuthService {
 
     async getCurrentUser() {
         try {
-            const session = await this.account.getSession('current');
-            if (!session) return null; // No active session
-    
-            return await this.account.get(); // Now safe to fetch account
+            return await this.account.get();
         } catch (error) {
-            console.log("Appwrite service :: getCurrentUser :: error", error);
-            return null;
+            console.log("Appwrite serive :: getCurrentUser :: error", error);
         }
+
+        return null;
     }
 
     async logout() {
@@ -61,3 +59,5 @@ export class AuthService {
 const authService = new AuthService();
 
 export default authService
+
+
